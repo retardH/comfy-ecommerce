@@ -3,7 +3,10 @@ import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { links } from '../../utils/constants.ts';
+import CartButtons from '../cart-buttons';
+import { useUserContext } from '../../contexts/user.tsx';
 const Navbar = () => {
+  const { toggleSidebar } = useUserContext();
   return (
     <NavContainer>
       <div className="nav-center">
@@ -11,7 +14,11 @@ const Navbar = () => {
           <Link to="/">
             <img src={logo} alt="logo" />
           </Link>
-          <button type="button" className="nav-toggle">
+          <button
+            type="button"
+            className="nav-toggle"
+            onClick={() => toggleSidebar('open')}
+          >
             <FaBars />
           </button>
         </div>
@@ -22,7 +29,7 @@ const Navbar = () => {
             </li>
           ))}
         </ul>
-        Navbar
+        <CartButtons />
       </div>
     </NavContainer>
   );

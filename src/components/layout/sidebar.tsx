@@ -1,7 +1,46 @@
 import styled from 'styled-components';
+import { clsx } from 'clsx';
+import { FaTimes } from 'react-icons/fa';
+import logo from '../../assets/logo.svg';
+import { links } from '../../utils/constants.ts';
+import { Link } from 'react-router-dom';
+import CartButtons from '../cart-buttons';
+import { useUserContext } from '../../contexts/user.tsx';
 
 const Sidebar = () => {
-  return <SidebarContainer>Sidebar</SidebarContainer>;
+  const { isSidebarOpen, toggleSidebar } = useUserContext();
+  return (
+    <SidebarContainer>
+      <aside className={clsx(isSidebarOpen && 'show-sidebar', 'sidebar')}>
+        <div className="sidebar-header">
+          <img src={logo} alt="comfy sloth" />
+          <button
+            type="button"
+            className="close-btn"
+            onClick={() => toggleSidebar('close')}
+          >
+            <FaTimes />
+          </button>
+        </div>
+        <ul className="links">
+          {links.map((link) => (
+            <li key={link.id}>
+              <Link to={link.url} onClick={() => toggleSidebar('close')}>
+                {link.text}
+              </Link>
+            </li>
+          ))}
+          {/*Need to render conditionally based on user exists or not*/}
+          <li>
+            <Link to="/checkout" onClick={() => toggleSidebar('close')}>
+              checkout
+            </Link>
+          </li>
+        </ul>
+        <CartButtons />
+      </aside>
+    </SidebarContainer>
+  );
 };
 
 export default Sidebar;

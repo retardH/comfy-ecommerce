@@ -1,7 +1,24 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import { FaShoppingCart } from 'react-icons/fa';
+// import { FaUserLarge } from 'react-icons/fa6';
 
 const CartButtons = () => {
-  return <Wrapper>Cart Buttons</Wrapper>;
+  return (
+    <Wrapper className="cart-btn-wrapper">
+      <Link to="/cart" className="cart-btn">
+        Cart
+        <span className="cart-container">
+          <FaShoppingCart />
+          <span className="cart-value">12</span>
+        </span>
+      </Link>
+      <button type="button" className="auth-btn">
+        Login
+        {/*<FaUserLarge />*/}
+      </button>
+    </Wrapper>
+  );
 };
 
 export default CartButtons;
@@ -14,10 +31,9 @@ const Wrapper = styled.div`
 
   .cart-btn {
     color: var(--clr-grey-1);
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     letter-spacing: var(--spacing);
     display: flex;
-
     align-items: center;
   }
   .cart-container {
@@ -49,7 +65,8 @@ const Wrapper = styled.div`
     align-items: center;
     background: transparent;
     border-color: transparent;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    font-family: inherit;
     cursor: pointer;
     color: var(--clr-grey-1);
     letter-spacing: var(--spacing);
