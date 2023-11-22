@@ -1,13 +1,13 @@
-import Header from './header.tsx';
 import Navbar from './navbar.tsx';
 import Footer from './footer.tsx';
 import { Outlet } from 'react-router-dom';
+import Sidebar from './sidebar.tsx';
 
 const MainLayout = () => {
   return (
     <main>
-      <Header />
       <Navbar />
+      <Sidebar />
       <Outlet />
       <Footer />
     </main>
