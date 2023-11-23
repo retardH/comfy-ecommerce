@@ -1,7 +1,32 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
+import heroBcg from '../../assets/hero-bcg.jpeg';
+import heroBcg2 from '../../assets/hero-bcg-2.jpeg';
 
 const Hero = () => {
-  return <Wrapper>Hero Section</Wrapper>;
+  return (
+    <Wrapper className="section-center">
+      <article className="content">
+        <h1>
+          design your <br />
+          comfort zone
+        </h1>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto, at
+          sed omnis corporis doloremque possimus velit! Repudiandae nisi odit,
+          aperiam odio ducimus, obcaecati libero et quia tempora excepturi quis
+          alias?
+        </p>
+        <Link to="/products" className="btn hero-btn">
+          shop now
+        </Link>
+      </article>
+      <article className="img-container">
+        <img src={heroBcg} alt="nice table" className="main-img" />
+        <img src={heroBcg2} alt="person working" className="accent-img" />
+      </article>
+    </Wrapper>
+  );
 };
 
 export default Hero;
@@ -21,12 +46,19 @@ const Wrapper = styled.section`
     color: var(--clr-grey-5);
     font-size: 1rem;
   }
+
+  .hero-btn {
+    padding: 0.5rem 1.4rem;
+    font-size: 1rem;
+  }
+
   @media (min-width: 992px) {
     height: calc(100vh - 5rem);
     grid-template-columns: 1fr 1fr;
     gap: 8rem;
     h1 {
       margin-bottom: 2rem;
+      line-height: 3.2rem;
     }
     p {
       font-size: 1.25rem;
@@ -61,7 +93,7 @@ const Wrapper = styled.section`
       width: 10%;
       height: 80%;
       background: var(--clr-primary-9);
-      bottom: 0%;
+      bottom: 0;
       left: -8%;
       border-radius: var(--radius);
     }

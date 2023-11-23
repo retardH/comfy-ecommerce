@@ -1,19 +1,29 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
+import { useUserContext } from '../../contexts/user.tsx';
 // import { FaUserLarge } from 'react-icons/fa6';
 
 const CartButtons = () => {
+  const { toggleSidebar } = useUserContext();
   return (
     <Wrapper className="cart-btn-wrapper">
-      <Link to="/cart" className="cart-btn">
+      <Link
+        to="/cart"
+        className="cart-btn"
+        onClick={() => toggleSidebar('close')}
+      >
         Cart
         <span className="cart-container">
           <FaShoppingCart />
           <span className="cart-value">12</span>
         </span>
       </Link>
-      <button type="button" className="auth-btn">
+      <button
+        type="button"
+        className="auth-btn"
+        onClick={() => toggleSidebar('close')}
+      >
         Login
         {/*<FaUserLarge />*/}
       </button>
