@@ -1,7 +1,34 @@
 import styled from 'styled-components';
+import { services } from '../../utils/constants.tsx';
 
 const Services = () => {
-  return <Wrapper>Services</Wrapper>;
+  return (
+    <Wrapper>
+      <div className="section-center">
+        <article className="header">
+          <h3>
+            custom furniture <br /> built only for you
+          </h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+            dolorum debitis consectetur reprehenderit non aliquam voluptates
+            dolore aut vero consequuntur.
+          </p>
+        </article>
+        <div className="services-center">
+          {services.map((service) => {
+            return (
+              <article className="service" key={service.id}>
+                <span className="icon">{service.icon}</span>
+                <h4>{service.title}</h4>
+                <p>{service.text}</p>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </Wrapper>
+  );
 };
 
 export default Services;
@@ -62,9 +89,10 @@ const Wrapper = styled.section`
     }
   }
   @media (min-width: 1280px) {
-    padding: 0;
-    .section-center {
-      transform: translateY(5rem);
+    padding: 3rem 0;
+    height: 400px;
+    .services-center {
+      transform: translateY(0.85rem);
     }
   }
 `;

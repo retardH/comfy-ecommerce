@@ -1,7 +1,24 @@
 import styled from 'styled-components';
+import { Link, useLocation } from 'react-router-dom';
+import { FC } from 'react';
 
-const PageHero = () => {
-  return <Wrapper>Page Hero</Wrapper>;
+type PageHeroProps = {
+  title: string;
+};
+const PageHero: FC<PageHeroProps> = ({ title }) => {
+  const { pathname } = useLocation();
+  const isProductsIncluded = pathname.includes('products');
+  return (
+    <Wrapper>
+      <div className="section-center">
+        <h3>
+          <Link to="/">Home</Link>
+          {isProductsIncluded && <Link to="/products">/ Products</Link>}/{' '}
+          {title}
+        </h3>
+      </div>
+    </Wrapper>
+  );
 };
 
 export default PageHero;

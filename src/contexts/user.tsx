@@ -16,7 +16,7 @@ type UserProviderProps = {
   children: React.ReactNode;
 };
 export const UserProvider: FC<UserProviderProps> = ({ children }) => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = (mode: 'open' | 'close') => {
     setIsSidebarOpen(mode === 'open');
   };

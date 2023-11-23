@@ -1,14 +1,8 @@
 import { createContext, FC, useContext, useReducer } from 'react';
 import productsReducer from '../reducers/products.ts';
-type ProductsContext = {
-  productsLoading: boolean;
-  productsError: any;
-  products: any[];
-  featuredProducts: any[];
-  singleProductLoading: boolean;
-  singleProduct: any;
-};
-const initialState: ProductsContext = {
+import { ProductsState } from '../types';
+
+const initialState: ProductsState = {
   productsLoading: false,
   productsError: false,
   products: [],
@@ -17,7 +11,12 @@ const initialState: ProductsContext = {
   singleProduct: {},
 };
 
-const ProductsContext = createContext<ProductsContext>(initialState);
+type ProductsContextState = ProductsState & {
+  fetchSingleProduct: any;
+};
+const ProductsContext = createContext<ProductsContextState>(
+  {} as ProductsContextState,
+);
 
 type ProductsProviderProps = {
   children: React.ReactNode;

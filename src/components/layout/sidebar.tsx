@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { clsx } from 'clsx';
 import { FaTimes } from 'react-icons/fa';
 import logo from '../../assets/logo.svg';
-import { links } from '../../utils/constants.ts';
+import { links } from '../../utils/constants.tsx';
 import { Link } from 'react-router-dom';
 import CartButtons from '../cart-buttons';
 import { useUserContext } from '../../contexts/user.tsx';
