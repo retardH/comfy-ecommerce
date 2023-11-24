@@ -1,7 +1,30 @@
 import styled from 'styled-components';
+import { FC } from 'react';
+import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
+import { formatPrice } from '../../utils/helper.ts';
 
-const Product = () => {
-  return <Wrapper>product</Wrapper>;
+type ProductProps = {
+  image: string;
+  name: string;
+  price: number;
+  id: string;
+};
+const Product: FC<ProductProps> = ({ id, image, name, price }) => {
+  return (
+    <Wrapper>
+      <div className="container">
+        <img src={image} alt={name} />
+        <Link to={`/products/${id}`} className="link">
+          <FaSearch />
+        </Link>
+      </div>
+      <footer>
+        <h5>{name}</h5>
+        <p>{formatPrice(price)}</p>
+      </footer>
+    </Wrapper>
+  );
 };
 
 export default Product;
