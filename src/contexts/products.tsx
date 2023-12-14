@@ -1,6 +1,6 @@
 import { createContext, FC, useContext, useEffect, useReducer } from 'react';
 import productsReducer from '../reducers/products.ts';
-import { ProductsState } from '../types';
+import { Product, ProductsState } from '../types';
 import axios from 'axios';
 import { products_url } from '../utils/constants.tsx';
 import {
@@ -18,7 +18,8 @@ const initialState: ProductsState = {
   products: [],
   featuredProducts: [],
   singleProductLoading: false,
-  singleProduct: {},
+  singleProduct: {} as Product,
+  singleProductError: false,
 };
 
 type ProductsContextState = ProductsState & {

@@ -1,7 +1,28 @@
+import clsx from 'clsx';
+import { FC, useState } from 'react';
 import styled from 'styled-components';
 
-const ProductImages = () => {
-  return <Wrapper>Prodcut Images</Wrapper>;
+type ProdcutImagesProps = {
+  images: any[];
+};
+const ProductImages: FC<ProdcutImagesProps> = ({ images = [{ url: '' }] }) => {
+  const [mainImg, setMainImg] = useState(images[0]);
+  return (
+    <Wrapper>
+      <img src={mainImg.url} alt="main product image" className="main" />
+      <div className="gallery">
+        {images.map((image, index) => (
+          <img
+            key={image.url}
+            src={image.url}
+            alt="product image"
+            className={clsx(image.url === mainImg.url ? 'active' : 'null')}
+            onClick={() => setMainImg(images[index])}
+          />
+        ))}
+      </div>
+    </Wrapper>
+  );
 };
 
 export default ProductImages;

@@ -8,10 +8,11 @@ export type Cart = {
 export type ProductsState = {
   productsLoading: boolean;
   productsError: any;
-  products: any[];
+  products: Product[];
   featuredProducts: any[];
   singleProductLoading: boolean;
-  singleProduct: any;
+  singleProduct: Product;
+  singleProductError: any;
 };
 
 export type FilterState = {
@@ -29,4 +30,20 @@ export type FilterState = {
     price: number;
     shipping: boolean;
   };
+};
+
+export type Product = {
+  id: string;
+  name: string;
+  price: number;
+  featured: boolean;
+  colors: string[];
+  description: string;
+  stock: number;
+  shipping: boolean;
+  stars: number;
+  reviews: number;
+  sku: any;
+  company: string;
+  images: any;
 };
