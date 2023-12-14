@@ -1,7 +1,38 @@
 import styled from 'styled-components';
+import { Product } from '../../types';
+import { FC, useState } from 'react';
+import clsx from 'clsx';
+import { FaCheck } from 'react-icons/fa';
 
-const AddToCart = () => {
-  return <Wrapper>Add To Cart</Wrapper>;
+type AddToCartProps = {
+  product: Product;
+};
+const AddToCart: FC<AddToCartProps> = ({ product }) => {
+  const { colors } = product;
+  const [mainClr, setMainClr] = useState(colors[0]);
+  return (
+    <Wrapper>
+      <div className="colors">
+        <span>colors : </span>
+        <div>
+          {colors.map((color, index) => {
+            return (
+              <button
+                key={index}
+                style={{ background: color }}
+                className={clsx(
+                  mainClr === color ? 'color-btn active' : 'color-btn',
+                )}
+                onClick={() => setMainClr(color)}
+              >
+                {mainClr === color ? <FaCheck /> : null}
+              </button>
+            );
+          })}
+        </div>
+      </div>
+    </Wrapper>
+  );
 };
 
 export default AddToCart;

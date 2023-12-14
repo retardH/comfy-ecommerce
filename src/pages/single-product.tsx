@@ -1,13 +1,18 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { useProductsContext } from '../contexts/products';
 import PageHero from '../components/page-hero';
 import { useEffect } from 'react';
 import { single_product_url } from '../utils/constants';
-// import ProductImages from '../components/product-images';
+import Error from '../components/error';
+import { formatPrice } from '../utils/helper';
+import ProductImages from '../components/product-images';
+import Stars from '../components/stars';
+import AddToCart from '../components/add-to-cart';
 
 const SingleProduct = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const {
     singleProduct: product,
     singleProductLoading: isLoading,
@@ -19,20 +24,61 @@ const SingleProduct = () => {
     fetchSingleProduct(`${single_product_url}${id}`);
   }, [id, fetchSingleProduct]);
 
+  useEffect(() => {
+    if (isError) {
+      setTimeout(() => {
+        navigate('/');
+      }, 3000);
+    }
+  }, [isError, navigate]);
+
   if (isLoading) {
     return <div>Is Loading...</div>;
   }
+  if (isError) {
+    return <Error />;
+  }
+  const {
+    id: sku,
+    images,
+    description,
+    company,
+    stars,
+    stock,
+    name,
+    price,
+    reviews,
+  } = product;
   return (
     <Wrapper>
       <PageHero title={product.name} />
       <div className="section section-center">
-        Single Product
-        {/* <div className="product-center">
-          <ProductImages images={product.images} />
+        <Link to="/products" className="btn">
+          back to products
+        </Link>
+        <div className="product-center">
+          <ProductImages images={images} />
           <section className="content">
-            <h2>Name: {product.name}</h2>
+            <h2>{name}</h2>
+            <Stars stars={stars} reviews={reviews} />
+            <h5 className="price">{formatPrice(price)}</h5>
+            <p className="desc">{description}</p>
+            <p className="info">
+              <span>Available : </span>
+              {stock <= 0 ? 'Out of stock' : 'in stock'}
+            </p>
+            <p className="info">
+              <span>SKU : </span>
+              {sku}
+            </p>
+            <p className="info">
+              <span>Brand : </span>
+              {company}
+            </p>
+            <hr />
+            <AddToCart product={product} />
           </section>
-        </div> */}
+        </div>
       </div>
     </Wrapper>
   );

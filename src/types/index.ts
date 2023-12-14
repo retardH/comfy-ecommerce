@@ -33,21 +33,16 @@ export type FilterState = {
 };
 
 export type Product = {
-  // name,
-  // price,
-  // description,
-  // stock,
-  // stars,
-  // reviews,
-  // id: sku,
-  // company,
-  // images,
+  id: string;
   name: string;
-  price: string | number;
+  price: number;
+  featured: boolean;
+  colors: string[];
   description: string;
-  stock: any;
-  stars: any;
-  reviews: any;
+  stock: number;
+  shipping: boolean;
+  stars: number;
+  reviews: number;
   sku: any;
   company: string;
   images: any;
