@@ -1,7 +1,21 @@
+import { FC } from 'react';
 import styled from 'styled-components';
+import Product from '../product';
+// import { Product as ProductType } from '../../types';
 
-const GridView = () => {
-  return <Wrapper>Grid View</Wrapper>;
+type GridViewProps = {
+  products: any[];
+};
+const GridView: FC<GridViewProps> = ({ products }) => {
+  return (
+    <Wrapper>
+      <div className="products-container">
+        {products.map((product) => {
+          return <Product key={product.id} {...product} />;
+        })}
+      </div>
+    </Wrapper>
+  );
 };
 
 export default GridView;
