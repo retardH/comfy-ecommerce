@@ -9,6 +9,7 @@ import { formatPrice } from '../utils/helper';
 import ProductImages from '../components/product-images';
 import Stars from '../components/stars';
 import AddToCart from '../components/add-to-cart';
+import Loading from '../components/loading';
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -22,7 +23,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     fetchSingleProduct(`${single_product_url}${id}`);
-  }, [id, fetchSingleProduct]);
+  }, [id]);
 
   useEffect(() => {
     if (isError) {
@@ -33,7 +34,7 @@ const SingleProduct = () => {
   }, [isError, navigate]);
 
   if (isLoading) {
-    return <div>Is Loading...</div>;
+    return <Loading />;
   }
   if (isError) {
     return <Error />;

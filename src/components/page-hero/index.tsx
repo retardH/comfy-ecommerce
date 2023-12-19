@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FC } from 'react';
 
 type PageHeroProps = {
-  title: string;
+  title?: string;
 };
 const PageHero: FC<PageHeroProps> = ({ title }) => {
   const { pathname } = useLocation();

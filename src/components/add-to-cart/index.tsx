@@ -3,19 +3,44 @@ import { Product } from '../../types';
 import { FC, useState } from 'react';
 import clsx from 'clsx';
 import { FaCheck } from 'react-icons/fa';
+import AmountButtons from '../amount-buttons';
+import { Link } from 'react-router-dom';
 
 type AddToCartProps = {
   product: Product;
 };
-const AddToCart: FC<AddToCartProps> = ({ product }) => {
-  const { colors } = product;
-  const [mainClr, setMainClr] = useState(colors[0]);
+const AddToCart: FC<AddToCartProps> = ({
+  product = { colors: [], stock: 0 },
+}) => {
+  const { colors, stock } = product;
+  const [mainClr, setMainClr] = useState(colors?.[0]);
+  const [amount, setAmount] = useState(1);
+
+  const increase = () => {
+    setAmount((prevAmount) => {
+      let tempAmount = prevAmount + 1;
+      if (tempAmount > stock) {
+        tempAmount = stock;
+      }
+      return tempAmount;
+    });
+  };
+
+  const decrease = () => {
+    setAmount((prevAmount) => {
+      let tempAmount = prevAmount - 1;
+      if (tempAmount < 1) {
+        tempAmount = 1;
+      }
+      return tempAmount;
+    });
+  };
   return (
     <Wrapper>
       <div className="colors">
         <span>colors : </span>
         <div>
-          {colors.map((color, index) => {
+          {colors?.map((color, index) => {
             return (
               <button
                 key={index}
@@ -30,6 +55,16 @@ const AddToCart: FC<AddToCartProps> = ({ product }) => {
             );
           })}
         </div>
+      </div>
+      <div className="btn-container">
+        <AmountButtons
+          amount={amount}
+          increase={increase}
+          decrease={decrease}
+        />
+        <Link to="/cart" className="btn">
+          add to cart
+        </Link>
       </div>
     </Wrapper>
   );
@@ -78,6 +113,6 @@ const Wrapper = styled.section`
 
   .btn {
     margin-top: 1rem;
-    width: 140px;
+    /* width: 140px; */
   }
 `;

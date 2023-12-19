@@ -1,7 +1,28 @@
+import { FC } from 'react';
+import { FaMinus, FaPlus } from 'react-icons/fa';
 import styled from 'styled-components';
 
-const AmountButtons = () => {
-  return <Wrapper>Amount Buttons</Wrapper>;
+type AmountButtonsProps = {
+  increase: () => void;
+  decrease: () => void;
+  amount: number | string;
+};
+const AmountButtons: FC<AmountButtonsProps> = ({
+  increase,
+  decrease,
+  amount,
+}) => {
+  return (
+    <Wrapper className="amount-btns">
+      <button type="button" className="amount-btn" onClick={decrease}>
+        <FaMinus />
+      </button>
+      <h2 className="amount">{amount}</h2>
+      <button type="button" className="amount-btn" onClick={increase}>
+        <FaPlus />
+      </button>
+    </Wrapper>
+  );
 };
 
 export default AmountButtons;

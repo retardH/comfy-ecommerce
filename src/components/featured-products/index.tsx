@@ -1,17 +1,14 @@
 import styled from 'styled-components';
 import { useProductsContext } from '../../contexts/products.tsx';
 import Product from '../product';
+import Loading from '../loading/index.tsx';
 
 const FeaturedProducts = () => {
   const { featuredProducts, productsLoading, productsError } =
     useProductsContext();
 
   if (productsLoading) {
-    return (
-      <div className="section section-center">
-        <div className="loading"></div>
-      </div>
-    );
+    return <Loading />;
   }
 
   if (productsError) {
