@@ -9,6 +9,7 @@ import React, {
 import { useProductsContext } from './products.tsx';
 import filterReducer from '../reducers/filter.ts';
 import {
+  CLEAR_FILTERS,
   FILTER_PRODUCTS,
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
@@ -91,11 +92,26 @@ export const FilterProvider: FC<FilterProviderProps> = ({ children }) => {
   const updateFilters = (
     e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
   ) => {
-    const { name, value } = e.target;
+    const name = e.target.name;
+    let value: string | number | boolean = e.target.value;
+    if (name === 'category') {
+      value = e.target.textContent!;
+    }
+    if (name === 'color') {
+      value = e.target.dataset.color!;
+    }
+    if (name === 'price') {
+      value = Number(value)!;
+    }
+    if (name === 'shipping') {
+      value = (e.target as any).checked;
+    }
     dispatch({ type: UPDATE_FILTERS, payload: { name, value } });
   };
 
-  const clearFilters = () => {};
+  const clearFilters = () => {
+    dispatch({ type: CLEAR_FILTERS });
+  };
   return (
     <FilterContext.Provider
       value={{

@@ -1,5 +1,6 @@
 import { FilterState } from '../types';
 import {
+  CLEAR_FILTERS,
   FILTER_PRODUCTS,
   LOAD_PRODUCTS,
   SET_GRIDVIEW,
@@ -74,6 +75,21 @@ const filterReducer = (state: FilterState, action: any): FilterState => {
   if (action.type === FILTER_PRODUCTS) {
     console.log('filter prodcuts action run');
     return state;
+  }
+  if (action.type === CLEAR_FILTERS) {
+    return {
+      ...state,
+      filters: {
+        text: '',
+        company: 'all',
+        category: 'all',
+        color: 'all',
+        minPrice: 0,
+        maxPrice: 0,
+        price: state.filters.maxPrice,
+        shipping: false,
+      },
+    };
   }
 
   throw new Error(`No mathing ${action.type} - action type!`);
