@@ -2,10 +2,11 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useUserContext } from '../../contexts/user.tsx';
-// import { FaUserLarge } from 'react-icons/fa6';
+import { useCartContext } from '../../contexts/cart.tsx';
 
 const CartButtons = () => {
   const { toggleSidebar } = useUserContext();
+  const { totalItems } = useCartContext();
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link
@@ -16,7 +17,7 @@ const CartButtons = () => {
         Cart
         <span className="cart-container">
           <FaShoppingCart />
-          <span className="cart-value">12</span>
+          <span className="cart-value">{totalItems}</span>
         </span>
       </Link>
       <button

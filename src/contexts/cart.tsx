@@ -7,10 +7,16 @@ import React, {
 } from 'react';
 import { Cart } from '../types';
 import cartReducer from '../reducers/cart.ts';
-import { ADD_TO_CART } from '../actions.ts';
+import {
+  ADD_TO_CART,
+  CLEAR_CART,
+  COUNT_CART_TOTALS,
+  REMOVE_CART_ITEM,
+  TOGGLE_CART_ITEM_AMOUNT,
+} from '../actions.ts';
 
 const getCartFromLocalStorage = () => {
-  const cart = localStorage.getItem('cart');
+  const cart = sessionStorage.getItem('cart');
   if (cart) {
     return JSON.parse(cart);
   } else {
@@ -49,17 +55,20 @@ export const CartProvider: FC<CartProviderProps> = ({ children }) => {
   };
 
   const removeItem = (id: string) => {
-    console.log(id);
+    dispatch({ type: REMOVE_CART_ITEM, payload: id });
   };
 
   const toggleAmount = (id: string, value: any) => {
-    console.log(id, value);
+    dispatch({ type: TOGGLE_CART_ITEM_AMOUNT, payload: { id, value } });
   };
 
-  const clearCart = () => {};
+  const clearCart = () => {
+    dispatch({ type: CLEAR_CART });
+  };
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(state.cart));
+    dispatch({ type: COUNT_CART_TOTALS });
+    sessionStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
   return (
     <CartContext.Provider
