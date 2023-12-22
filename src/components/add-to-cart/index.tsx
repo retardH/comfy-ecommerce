@@ -1,18 +1,20 @@
 import styled from 'styled-components';
-import { Product } from '../../types';
+import { SingleProduct } from '../../types';
 import { FC, useState } from 'react';
 import clsx from 'clsx';
 import { FaCheck } from 'react-icons/fa';
 import AmountButtons from '../amount-buttons';
 import { Link } from 'react-router-dom';
+import { useCartContext } from '../../contexts/cart';
 
 type AddToCartProps = {
-  product: Product;
+  product: SingleProduct;
 };
 const AddToCart: FC<AddToCartProps> = ({
   product = { colors: [], stock: 0 },
 }) => {
-  const { colors, stock } = product;
+  const { addToCart } = useCartContext();
+  const { colors, stock, id } = product;
   const [mainClr, setMainClr] = useState(colors?.[0]);
   const [amount, setAmount] = useState(1);
 
@@ -62,7 +64,13 @@ const AddToCart: FC<AddToCartProps> = ({
           increase={increase}
           decrease={decrease}
         />
-        <Link to="/cart" className="btn">
+        <Link
+          to="/cart"
+          className="btn"
+          onClick={() => {
+            addToCart(id, mainClr, amount, product);
+          }}
+        >
           add to cart
         </Link>
       </div>

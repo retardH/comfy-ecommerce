@@ -1,5 +1,5 @@
 export type Cart = {
-  cart: any[];
+  cart: CartItem[];
   totalItems: number;
   totalAmount: number;
   shippingFee: number;
@@ -11,7 +11,7 @@ export type ProductsState = {
   products: Product[];
   featuredProducts: any[];
   singleProductLoading: boolean;
-  singleProduct: Product;
+  singleProduct: SingleProduct;
   singleProductError: any;
 };
 
@@ -36,6 +36,18 @@ export type Product = {
   id: string;
   name: string;
   price: number;
+  image: string;
+  colors: string[];
+  company: string;
+  description: string;
+  category: string;
+  shipping: boolean;
+};
+
+export type SingleProduct = {
+  id: string;
+  name: string;
+  price: number;
   featured: boolean;
   colors: string[];
   description: string;
@@ -46,4 +58,14 @@ export type Product = {
   sku: any;
   company: string;
   images: any;
+};
+
+export type CartItem = {
+  id: string;
+  name: string;
+  color: string;
+  amount: number;
+  image: any;
+  price: number;
+  max: number;
 };

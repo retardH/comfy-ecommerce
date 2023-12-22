@@ -1,7 +1,27 @@
 import styled from 'styled-components';
+import { useCartContext } from '../../contexts/cart';
+import { formatPrice } from '../../utils/helper';
 
 const CartTotals = () => {
-  return <Wrapper>Cart Totals</Wrapper>;
+  const { totalAmount, shippingFee } = useCartContext();
+  return (
+    <Wrapper>
+      <div>
+        <article>
+          <h5>
+            subtotal :<span>{formatPrice(totalAmount)}</span>
+          </h5>
+          <p>
+            shipping fee :<span>{formatPrice(shippingFee)}</span>
+          </p>
+          <hr />
+          <h4>
+            order total :<span>{formatPrice(totalAmount + shippingFee)}</span>
+          </h4>
+        </article>
+      </div>
+    </Wrapper>
+  );
 };
 
 export default CartTotals;
