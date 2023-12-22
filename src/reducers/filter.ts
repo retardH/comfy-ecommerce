@@ -1,4 +1,4 @@
-import { FilterState } from '../types';
+import { FilterState, Product } from '../types';
 import {
   CLEAR_FILTERS,
   FILTER_PRODUCTS,
@@ -73,8 +73,38 @@ const filterReducer = (state: FilterState, action: any): FilterState => {
     };
   }
   if (action.type === FILTER_PRODUCTS) {
+    const { allProducts } = state;
+    const { text, category, company, color, price, shipping } = state.filters;
+    console.log(category);
+    let tempProducts: Product[] = [...allProducts];
+    if (text) {
+      tempProducts = tempProducts.filter((product) =>
+        product.name.startsWith(text),
+      );
+    }
+    if (category !== 'all') {
+      tempProducts = tempProducts.filter(
+        (product) => product.category === category,
+      );
+    }
+    if (company !== 'all') {
+      tempProducts = tempProducts.filter(
+        (product) => product.company === company,
+      );
+    }
+    if (color !== 'all') {
+      tempProducts = tempProducts.filter((product) =>
+        product.colors.includes(color),
+      );
+    }
+    tempProducts = tempProducts.filter((product) => product.price <= price);
+    if (shipping) {
+      tempProducts = tempProducts.filter(
+        (product) => product.shipping === true,
+      );
+    }
     console.log('filter prodcuts action run');
-    return state;
+    return { ...state, filteredProducts: tempProducts };
   }
   if (action.type === CLEAR_FILTERS) {
     return {

@@ -39,9 +39,13 @@ const initialState: FilterState = {
 type FilterContextState = FilterState & {
   setGridView: () => void;
   setListView: () => void;
-  updateSort: any;
-  updateFilters: any;
-  clearFilters: any;
+  updateSort: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  updateFilters: (
+    e:
+      | React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+      | React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => void;
+  clearFilters: () => void;
 };
 
 const FilterContext = createContext<FilterContextState>(
@@ -54,8 +58,16 @@ type FilterProviderProps = {
 export const FilterProvider: FC<FilterProviderProps> = ({ children }) => {
   const { products } = useProductsContext();
   const [state, dispatch] = useReducer(filterReducer, initialState);
-  const { text, price, minPrice, maxPrice, color, company, shipping } =
-    state.filters;
+  const {
+    text,
+    price,
+    minPrice,
+    maxPrice,
+    color,
+    company,
+    shipping,
+    category,
+  } = state.filters;
   useEffect(() => {
     dispatch({ type: LOAD_PRODUCTS, payload: products });
   }, [products]);
@@ -73,6 +85,7 @@ export const FilterProvider: FC<FilterProviderProps> = ({ children }) => {
     color,
     company,
     shipping,
+    category,
   ]);
 
   const setGridView = () => {
@@ -90,12 +103,13 @@ export const FilterProvider: FC<FilterProviderProps> = ({ children }) => {
   };
 
   const updateFilters = (
-    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>,
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement> | any,
   ) => {
     const name = e.target.name;
     let value: string | number | boolean = e.target.value;
     if (name === 'category') {
       value = e.target.textContent!;
+      console.log('event target name', name, value);
     }
     if (name === 'color') {
       value = e.target.dataset.color!;

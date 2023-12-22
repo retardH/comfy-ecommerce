@@ -6,7 +6,7 @@ import { FaCheck } from 'react-icons/fa';
 
 const Filters = () => {
   const {
-    filteredProducts,
+    allProducts,
     filters: {
       text,
       price,
@@ -21,11 +21,10 @@ const Filters = () => {
     clearFilters,
   } = useFilterContext();
 
-  const categories = getUniqueValues(filteredProducts, 'category');
-  const colors = getUniqueValues(filteredProducts, 'colors');
-  const companies = getUniqueValues(filteredProducts, 'company');
+  const categories = getUniqueValues(allProducts, 'category');
+  const colors = getUniqueValues(allProducts, 'colors');
+  const companies = getUniqueValues(allProducts, 'company');
 
-  console.log(categories, colors);
   return (
     <Wrapper>
       <div className="content">
