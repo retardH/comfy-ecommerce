@@ -8,7 +8,7 @@ import CartButtons from '../cart-buttons';
 import { useUserContext } from '../../contexts/user.tsx';
 
 const Sidebar = () => {
-  const { isSidebarOpen, toggleSidebar } = useUserContext();
+  const { isSidebarOpen, toggleSidebar, user } = useUserContext();
   return (
     <SidebarContainer>
       <aside className={clsx(isSidebarOpen && 'show-sidebar', 'sidebar')}>
@@ -30,12 +30,13 @@ const Sidebar = () => {
               </Link>
             </li>
           ))}
-          {/*Need to render conditionally based on user exists or not*/}
-          <li>
-            <Link to="/checkout" onClick={() => toggleSidebar('close')}>
-              checkout
-            </Link>
-          </li>
+          {user && (
+            <li>
+              <Link to="/checkout" onClick={() => toggleSidebar('close')}>
+                checkout
+              </Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </aside>

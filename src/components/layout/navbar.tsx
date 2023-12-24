@@ -6,7 +6,7 @@ import { links } from '../../utils/constants.tsx';
 import CartButtons from '../cart-buttons';
 import { useUserContext } from '../../contexts/user.tsx';
 const Navbar = () => {
-  const { toggleSidebar } = useUserContext();
+  const { toggleSidebar, user } = useUserContext();
   return (
     <NavContainer>
       <div className="nav-center">
@@ -28,6 +28,11 @@ const Navbar = () => {
               <Link to={link.url}>{link.text}</Link>
             </li>
           ))}
+          {user && (
+            <li>
+              <Link to="/checkout">checkout</Link>
+            </li>
+          )}
         </ul>
         <CartButtons />
       </div>

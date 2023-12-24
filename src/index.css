@@ -43,7 +43,7 @@ Variables
     --transition: all 0.3s linear;
     --spacing: 0.1rem;
     --radius: 0.25rem;
-    --btn-radius: 32px;
+    --btn-radius: 0.3rem;
     --light-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --dark-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
     --max-width: 1170px;
@@ -154,6 +154,12 @@ p {
     max-width: var(--max-width);
 }
 
+.loading-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media screen and (min-width: 992px) {
     .section-center {
         width: 95vw;
@@ -171,8 +177,7 @@ p {
 .loading {
     width: 6rem;
     height: 6rem;
-    margin: 0 auto;
-    margin-top: 10rem;
+    margin: 10rem auto 10rem auto;
     border-radius: 50%;
     border: 4px solid #ccc;
     border-top-color: var(--clr-primary-5);

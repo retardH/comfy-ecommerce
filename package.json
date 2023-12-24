@@ -11,6 +11,13 @@
     "format": "prettier --write \"**/*.{ts,tsx}\" && eslint . --ext .ts --ext .tsx --fix && git add -A ."
   },
   "dependencies": {
+    "@auth0/auth0-react": "^2.2.4",
+    "@stripe/react-stripe-js": "^1.14.2",
+    "@stripe/stripe-js": "^1.42.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "airtable-node": "^0.1.20",
     "@types/node": "^20.9.0",
     "axios": "^1.6.2",
     "clsx": "^2.0.0",
@@ -23,6 +30,12 @@
     "react-select": "^5.8.0",
     "styled-components": "^6.1.1",
     "web-vitals": "^3.5.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
