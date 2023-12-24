@@ -14,7 +14,7 @@ const AddToCart: FC<AddToCartProps> = ({
   product = { colors: [], stock: 0 },
 }) => {
   const { addToCart } = useCartContext();
-  const { colors, stock, id } = product;
+  const { colors, stock, id } = product as SingleProduct;
   const [mainClr, setMainClr] = useState(colors?.[0]);
   const [amount, setAmount] = useState(1);
 

@@ -23,6 +23,7 @@ const SingleProduct = () => {
 
   useEffect(() => {
     fetchSingleProduct(`${single_product_url}${id}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   useEffect(() => {
@@ -31,7 +32,8 @@ const SingleProduct = () => {
         navigate('/');
       }, 3000);
     }
-  }, [isError, navigate]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isError]);
 
   if (isLoading) {
     return <Loading />;

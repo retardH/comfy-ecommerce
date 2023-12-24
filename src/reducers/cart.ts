@@ -12,7 +12,6 @@ const cartReducer = (state: Cart, action: any): Cart => {
     const { id, color, amount, product } = action.payload;
     const tempItem = state.cart.find((i) => i.id === id + color);
     if (tempItem) {
-      console.log('cart already has items');
       const tempCart = state.cart.map((item) => {
         if (tempItem.id === item.id) {
           let newAmount = item.amount + amount;

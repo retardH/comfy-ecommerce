@@ -7,6 +7,7 @@ import { useCartContext } from '../../contexts/cart.tsx';
 const CartButtons = () => {
   const { toggleSidebar } = useUserContext();
   const { totalItems } = useCartContext();
+  const { loginWithRedirect, logout, user } = useUserContext();
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link
@@ -20,14 +21,19 @@ const CartButtons = () => {
           <span className="cart-value">{totalItems}</span>
         </span>
       </Link>
-      <button
-        type="button"
-        className="auth-btn"
-        onClick={() => toggleSidebar('close')}
-      >
-        Login
-        {/*<FaUserLarge />*/}
-      </button>
+      {user ? (
+        <button
+          type="button"
+          className="auth-btn"
+          onClick={() => logout({ returnTo: window.location.origin })}
+        >
+          Logout
+        </button>
+      ) : (
+        <button type="button" className="auth-btn" onClick={loginWithRedirect}>
+          Login
+        </button>
+      )}
     </Wrapper>
   );
 };

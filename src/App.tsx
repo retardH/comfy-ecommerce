@@ -1,10 +1,11 @@
+import AuthWrapper from './pages/auth-wrapper';
 import { RenderRoutes } from './routes';
 
 function App() {
   return (
-    <main>
+    <AuthWrapper>
       <RenderRoutes />
-    </main>
+    </AuthWrapper>
   );
 }
 

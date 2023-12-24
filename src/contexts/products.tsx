@@ -1,6 +1,6 @@
 import { createContext, FC, useContext, useEffect, useReducer } from 'react';
 import productsReducer from '../reducers/products.ts';
-import { Product, ProductsState } from '../types';
+import { ProductsState } from '../types';
 import axios from 'axios';
 import { products_url } from '../utils/constants.tsx';
 import {
@@ -13,12 +13,26 @@ import {
 } from '../actions.ts';
 
 const initialState: ProductsState = {
-  productsLoading: false,
+  productsLoading: true,
   productsError: false,
   products: [],
   featuredProducts: [],
-  singleProductLoading: false,
-  singleProduct: {} as Product,
+  singleProductLoading: true,
+  singleProduct: {
+    id: '',
+    name: '',
+    price: 0,
+    images: [],
+    colors: [],
+    company: '',
+    description: '',
+    shipping: false,
+    featured: false,
+    stock: 0,
+    stars: 0,
+    reviews: 0,
+    sku: '',
+  },
   singleProductError: false,
 };
 
@@ -39,7 +53,6 @@ const ProductsProvider: FC<ProductsProviderProps> = ({ children }) => {
     dispatch({ type: GET_PRODUCTS_BEGIN });
     try {
       const response = await axios.get(url);
-      console.log(response);
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: response.data });
     } catch (err) {
       dispatch({ type: GET_PRODUCTS_ERROR });
@@ -51,7 +64,6 @@ const ProductsProvider: FC<ProductsProviderProps> = ({ children }) => {
     dispatch({ type: GET_SINGLE_PRODUCT_BEGIN });
     try {
       const response = await axios.get(url);
-      console.log(response);
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: response.data });
     } catch (err) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });

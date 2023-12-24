@@ -5,7 +5,7 @@ import styled from 'styled-components';
 type ProdcutImagesProps = {
   images: any[];
 };
-const ProductImages: FC<ProdcutImagesProps> = ({ images = [{ url: '' }] }) => {
+const ProductImages: FC<ProdcutImagesProps> = ({ images }) => {
   const [mainImg, setMainImg] = useState(images[0]);
   return (
     <Wrapper>
