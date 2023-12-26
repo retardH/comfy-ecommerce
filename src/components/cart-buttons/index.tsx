@@ -6,7 +6,7 @@ import { useCartContext } from '../../contexts/cart.tsx';
 
 const CartButtons = () => {
   const { toggleSidebar } = useUserContext();
-  const { totalItems } = useCartContext();
+  const { totalItems, clearCart } = useCartContext();
   const { loginWithRedirect, logout, user } = useUserContext();
   return (
     <Wrapper className="cart-btn-wrapper">
@@ -25,7 +25,10 @@ const CartButtons = () => {
         <button
           type="button"
           className="auth-btn"
-          onClick={() => logout({ returnTo: window.location.origin })}
+          onClick={() => {
+            clearCart();
+            logout({ returnTo: window.location.origin });
+          }}
         >
           Logout
         </button>

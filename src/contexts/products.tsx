@@ -56,7 +56,6 @@ const ProductsProvider: FC<ProductsProviderProps> = ({ children }) => {
       dispatch({ type: GET_PRODUCTS_SUCCESS, payload: response.data });
     } catch (err) {
       dispatch({ type: GET_PRODUCTS_ERROR });
-      console.log(err);
     }
   };
 
@@ -67,7 +66,6 @@ const ProductsProvider: FC<ProductsProviderProps> = ({ children }) => {
       dispatch({ type: GET_SINGLE_PRODUCT_SUCCESS, payload: response.data });
     } catch (err) {
       dispatch({ type: GET_SINGLE_PRODUCT_ERROR });
-      console.log(err);
     }
   };
   useEffect(() => {
