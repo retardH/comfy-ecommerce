@@ -13,8 +13,8 @@ const PageHero: FC<PageHeroProps> = ({ title }) => {
       <div className="section-center">
         <h3>
           <Link to="/">Home</Link>
-          {isProductsIncluded && <Link to="/products">/ Products</Link>}/{' '}
-          {title}
+          {isProductsIncluded && <Link to="/products">/ Products</Link>}
+          {title && `/ ${title}`}
         </h3>
       </div>
     </Wrapper>

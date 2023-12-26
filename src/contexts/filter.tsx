@@ -109,7 +109,6 @@ export const FilterProvider: FC<FilterProviderProps> = ({ children }) => {
     let value: string | number | boolean = e.target.value;
     if (name === 'category') {
       value = e.target.textContent!;
-      console.log('event target name', name, value);
     }
     if (name === 'color') {
       value = e.target.dataset.color!;
