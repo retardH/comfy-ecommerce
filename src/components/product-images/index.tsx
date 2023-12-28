@@ -1,9 +1,10 @@
 import clsx from 'clsx';
 import { FC, useState } from 'react';
 import styled from 'styled-components';
+import { ProductImage } from '../../types';
 
 type ProdcutImagesProps = {
-  images: any[];
+  images: ProductImage[];
 };
 const ProductImages: FC<ProdcutImagesProps> = ({ images }) => {
   const [mainImg, setMainImg] = useState(images[0]);

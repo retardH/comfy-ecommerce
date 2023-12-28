@@ -1,10 +1,10 @@
 import { FC } from 'react';
 import styled from 'styled-components';
 import Product from '../product';
-// import { Product as ProductType } from '../../types';
+import { Product as ProductType } from '../../types';
 
 type GridViewProps = {
-  products: any[];
+  products: ProductType[];
 };
 const GridView: FC<GridViewProps> = ({ products }) => {
   return (

@@ -69,3 +69,14 @@ export type CartItem = {
   price: number;
   max: number;
 };
+
+export type ProductImage = {
+  id: string;
+  width: number;
+  height: number;
+  filename: string;
+  url: string;
+  size: number;
+  type: string;
+  thumbnails: any[];
+};

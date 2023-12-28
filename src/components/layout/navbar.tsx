@@ -1,19 +1,17 @@
 import styled from 'styled-components';
-import logo from '../../assets/logo.svg';
 import { Link } from 'react-router-dom';
 import { FaBars } from 'react-icons/fa';
 import { links } from '../../utils/constants.tsx';
 import CartButtons from '../cart-buttons';
 import { useUserContext } from '../../contexts/user.tsx';
+import Logo from '../logo/index.tsx';
 const Navbar = () => {
   const { toggleSidebar, user } = useUserContext();
   return (
     <NavContainer>
       <div className="nav-center">
         <div className="nav-header">
-          <Link to="/">
-            <img src={logo} alt="logo" />
-          </Link>
+          <Logo />
           <button
             type="button"
             className="nav-toggle"
