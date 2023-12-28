@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { clsx } from 'clsx';
 import { FaTimes } from 'react-icons/fa';
-import logo from '../../assets/logo.svg';
 import { links } from '../../utils/constants.tsx';
 import { Link } from 'react-router-dom';
 import CartButtons from '../cart-buttons';
 import { useUserContext } from '../../contexts/user.tsx';
+import Logo from '../logo/index.tsx';
 
 const Sidebar = () => {
   const { isSidebarOpen, toggleSidebar, user } = useUserContext();
@@ -13,7 +13,7 @@ const Sidebar = () => {
     <SidebarContainer>
       <aside className={clsx(isSidebarOpen && 'show-sidebar', 'sidebar')}>
         <div className="sidebar-header">
-          <img src={logo} alt="comfy sloth" />
+          <Logo />
           <button
             type="button"
             className="close-btn"

@@ -16,7 +16,7 @@ import {
 } from '../actions.ts';
 
 const getCartFromLocalStorage = () => {
-  const cart = sessionStorage.getItem('cart');
+  const cart = localStorage.getItem('cart');
   if (cart) {
     return JSON.parse(cart);
   } else {
@@ -68,7 +68,7 @@ export const CartProvider: FC<CartProviderProps> = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: COUNT_CART_TOTALS });
-    sessionStorage.setItem('cart', JSON.stringify(state.cart));
+    localStorage.setItem('cart', JSON.stringify(state.cart));
   }, [state.cart]);
   return (
     <CartContext.Provider

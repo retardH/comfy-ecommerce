@@ -1,7 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,400;0,700;1,400;1,500;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap');
 /*
 ===============
 Variables
@@ -10,33 +7,33 @@ Variables
 
 :root {
     /* dark shades of primary color*/
-    --clr-primary-1: hsl(22, 28%, 21%);
-    --clr-primary-2: hsl(22, 28%, 29%);
-    --clr-primary-3: hsl(22, 28%, 37%);
-    --clr-primary-4: hsl(22, 28%, 45%);
+    --clr-primary-1: #0c4a6e;
+    --clr-primary-2: #075985;
+    --clr-primary-3: #0369a1;
+    --clr-primary-4: #0284c7;
     /* primary/main color */
-    --clr-primary-5: hsl(22, 31%, 52%);
+    --clr-primary-5: #0ea5e9;
     /* lighter shades of primary color */
-    --clr-primary-6: hsl(22, 31%, 60%);
-    --clr-primary-7: hsl(22, 31%, 67%);
-    --clr-primary-8: hsl(20, 31%, 74%);
-    --clr-primary-9: hsl(22, 31%, 81%);
-    --clr-primary-10: hsl(22, 31%, 88%);
+    --clr-primary-6: #38bdf8;
+    --clr-primary-7: #7dd3fc;
+    --clr-primary-8: #bae6fd;
+    --clr-primary-9: #e0f2fe;
+    --clr-primary-10: #f0f9ff;
     /* darkest grey - used for headings */
-    --clr-grey-1: hsl(209, 61%, 16%);
-    --clr-grey-2: hsl(211, 39%, 23%);
-    --clr-grey-3: hsl(209, 34%, 30%);
-    --clr-grey-4: hsl(209, 28%, 39%);
+    --clr-grey-1: #111827;
+    --clr-grey-2: #1f2937;
+    --clr-grey-3: #374151;
+    --clr-grey-4: #4b5563;
     /* grey used for paragraphs */
-    --clr-grey-5: hsl(210, 22%, 49%);
-    --clr-grey-6: hsl(209, 23%, 60%);
-    --clr-grey-7: hsl(211, 27%, 70%);
-    --clr-grey-8: hsl(210, 31%, 80%);
-    --clr-grey-9: hsl(212, 33%, 89%);
-    --clr-grey-10: hsl(210, 36%, 96%);
+    --clr-grey-5: #6b7280;
+    --clr-grey-6: #9ca3af;
+    --clr-grey-7: #d1d5db;
+    --clr-grey-8: #e5e7eb;
+    --clr-grey-9: #f3f4f6;
+    --clr-grey-10: #f9fafb;
     --clr-white: #fff;
-    --clr-red-dark: hsl(360, 67%, 44%);
-    --clr-red-light: hsl(360, 71%, 66%);
+    --clr-red-dark: #dc2626;
+    --clr-red-light: #f87171;
     --clr-green-dark: hsl(125, 67%, 44%);
     --clr-green-light: hsl(125, 71%, 66%);
     --clr-black: #222;
@@ -63,16 +60,15 @@ Global Styles
     box-sizing: border-box;
 }
 body {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    /*font-family: 'Khand', sans-serif;*/
     background: var(--clr-white);
     color: var(--clr-grey-1);
     line-height: 1.5;
     font-size: 0.875rem;
 }
 button {
-    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 0.875rem;
 }
@@ -91,7 +87,8 @@ h2,
 h3,
 h4,
 h5 {
-    font-family: 'Montserrat', serif;
+    /* font-family: 'Montserrat', serif; */
+    font-family: 'Zodiak', serif;
     letter-spacing: var(--spacing);
     text-transform: capitalize;
     line-height: 1.25;

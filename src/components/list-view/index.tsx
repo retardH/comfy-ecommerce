@@ -2,9 +2,10 @@ import { FC } from 'react';
 import styled from 'styled-components';
 import { formatPrice } from '../../utils/helper';
 import { Link } from 'react-router-dom';
+import { Product } from '../../types';
 
 type ListViewProps = {
-  products: any[];
+  products: Product[];
 };
 const ListView: FC<ListViewProps> = ({ products }) => {
   return (
@@ -56,14 +57,14 @@ const Wrapper = styled.section`
   }
   .btn {
     font-size: 0.8rem;
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem 0.75rem 0.6rem 0.75rem;
   }
   @media (min-width: 992px) {
     article {
       display: grid;
       grid-template-columns: auto 1fr;
       column-gap: 2rem;
-      align-items: center;
+      align-items: start;
     }
   }
 `;

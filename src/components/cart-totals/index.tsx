@@ -67,5 +67,6 @@ const Wrapper = styled.section`
     margin-top: 1rem;
     text-align: center;
     font-weight: 700;
+    padding: 0.4rem 0.75rem 0.5rem 0.75rem;
   }
 `;
