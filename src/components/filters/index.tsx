@@ -167,7 +167,7 @@ const Wrapper = styled.section`
 
   button {
     display: block;
-    margin: 0.25em 0;
+    margin: 0.2em 0;
     padding: 0.25rem 0;
     text-transform: capitalize;
     background: transparent;
@@ -242,6 +242,10 @@ const Wrapper = styled.section`
     .content {
       position: sticky;
       top: 1rem;
+    }
+
+    h5 {
+      font-size: 1.15rem;
     }
   }
 `;

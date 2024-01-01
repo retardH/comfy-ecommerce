@@ -34,4 +34,11 @@ const Wrapper = styled.h3`
     color: var(--clr-primary-1);
     letter-spacing: 0.8px;
   }
+  @media (max-width: 992px) {
+    font-size: 1.4rem;
+
+    &::after {
+      height: 30px;
+    }
+  }
 `;

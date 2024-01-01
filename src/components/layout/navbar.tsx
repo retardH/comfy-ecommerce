@@ -32,7 +32,7 @@ const Navbar = () => {
             </li>
           )}
         </ul>
-        <CartButtons />
+        <CartButtons isNavbar />
       </div>
     </NavContainer>
   );
@@ -55,6 +55,7 @@ const NavContainer = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: row;
     img {
       width: 175px;
       margin-left: -15px;
@@ -64,9 +65,11 @@ const NavContainer = styled.nav`
     background: transparent;
     border: transparent;
     color: var(--clr-primary-5);
+    display: flex;
+    align-items: center;
     cursor: pointer;
     svg {
-      font-size: 2rem;
+      font-size: 1.8rem;
     }
   }
   .nav-links {
@@ -76,6 +79,9 @@ const NavContainer = styled.nav`
     display: none;
   }
   @media (min-width: 992px) {
+    .nav-header {
+      flex-direction: row;
+    }
     .nav-toggle {
       display: none;
     }
@@ -102,7 +108,7 @@ const NavContainer = styled.nav`
       }
     }
     .cart-btn-wrapper {
-      display: grid;
+      display: flex;
     }
   }
 `;

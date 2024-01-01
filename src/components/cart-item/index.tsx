@@ -92,6 +92,7 @@ const Wrapper = styled.article`
       height: 0.5rem;
       background: red;
       margin-left: 0.5rem;
+      margin-top: 3.4px;
       border-radius: var(--radius);
     }
   }

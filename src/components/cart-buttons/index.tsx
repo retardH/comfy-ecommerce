@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom';
 import { FaShoppingCart } from 'react-icons/fa';
 import { useUserContext } from '../../contexts/user.tsx';
 import { useCartContext } from '../../contexts/cart.tsx';
+import { FC } from 'react';
+import Profile from '../profile/index.tsx';
 
-const CartButtons = () => {
+type CartButtonsProp = {
+  isNavbar?: boolean;
+};
+const CartButtons: FC<CartButtonsProp> = ({ isNavbar }) => {
   const { toggleSidebar } = useUserContext();
-  const { totalItems, clearCart } = useCartContext();
-  const { loginWithRedirect, logout, user } = useUserContext();
+  const { totalItems } = useCartContext();
+  const { loginWithRedirect, user } = useUserContext();
   return (
     <Wrapper className="cart-btn-wrapper">
       <Link
@@ -15,24 +20,14 @@ const CartButtons = () => {
         className="cart-btn"
         onClick={() => toggleSidebar('close')}
       >
-        Cart
+        <span className="cart-text">Cart</span>
         <span className="cart-container">
           <FaShoppingCart />
           <span className="cart-value">{totalItems}</span>
         </span>
       </Link>
-      {user ? (
-        <button
-          type="button"
-          className="auth-btn"
-          onClick={() => {
-            clearCart();
-            logout({ returnTo: window.location.origin });
-          }}
-        >
-          Logout
-        </button>
-      ) : (
+      {isNavbar && user && <Profile />}
+      {!user && (
         <button type="button" className="auth-btn" onClick={loginWithRedirect}>
           Login
         </button>
@@ -44,8 +39,8 @@ const CartButtons = () => {
 export default CartButtons;
 
 const Wrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  gap: 28px;
   align-items: center;
   width: 225px;
 
