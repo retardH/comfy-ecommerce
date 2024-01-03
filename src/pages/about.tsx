@@ -15,21 +15,16 @@ const About = () => {
             <p>
               Welcome to ComfyHome, your go-to destination for exquisite
               furniture that seamlessly combines aesthetics, functionality, and
-              affordability. At ComfyHome, we understand that furnishing a home
-              is more than just acquiring pieces; it's about creating an
-              environment that reflects your individual style and enhances your
-              daily life. With a passion for design and an unwavering commitment
-              to quality, we source and curate a diverse range of furniture that
-              caters to various tastes and preferences. Our mission is to make
-              the process of transforming your living spaces enjoyable and
-              convenient. Whether you're seeking modern minimalism, classic
-              elegance, or eclectic charm, our thoughtfully selected collection
-              offers something for every discerning taste. With a user-friendly
-              online platform, we aim to simplify your shopping experience,
-              providing detailed product information and expert guidance to help
-              you make informed decisions. Join us at ComfyHome on this exciting
-              journey of turning houses into homes, where comfort, style, and
-              affordability come together seamlessly.
+              affordability. Our mission is to make the process of transforming
+              your living spaces enjoyable and convenient. Whether you're
+              seeking modern minimalism, classic elegance, or eclectic charm,
+              our thoughtfully selected collection offers something for every
+              discerning taste. With a user-friendly online platform, we aim to
+              simplify your shopping experience, providing detailed product
+              information and expert guidance to help you make informed
+              decisions. Join us at ComfyHome on this exciting journey of
+              turning houses into homes, where comfort, style, and affordability
+              come together seamlessly.
             </p>
           </div>
         </article>

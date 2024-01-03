@@ -67,6 +67,7 @@ const Wrapper = styled.div`
   .show {
     opacity: 1;
     pointer-events: all;
+    z-index: 99999;
   }
 
   .btn {
