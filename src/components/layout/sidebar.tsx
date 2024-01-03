@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import CartButtons from '../cart-buttons';
 import { useUserContext } from '../../contexts/user.tsx';
 import Logo from '../logo/index.tsx';
+import Profile from '../profile/index.tsx';
 
 const Sidebar = () => {
   const { isSidebarOpen, toggleSidebar, user } = useUserContext();
@@ -14,6 +15,11 @@ const Sidebar = () => {
       <aside className={clsx(isSidebarOpen && 'show-sidebar', 'sidebar')}>
         <div className="sidebar-header">
           <Logo />
+          {user && isSidebarOpen && (
+            <div>
+              <Profile />
+            </div>
+          )}
           <button
             type="button"
             className="close-btn"
@@ -54,6 +60,9 @@ const SidebarContainer = styled.div`
     align-items: center;
     padding: 1rem 1.5rem;
   }
+  .sidebar-header div:nth-child(2) {
+    margin-left: auto;
+  }
   .close-btn {
     font-size: 2rem;
     background: transparent;
@@ -61,7 +70,7 @@ const SidebarContainer = styled.div`
     transition: var(--transition);
     cursor: pointer;
     color: var(--clr-red-dark);
-    margin-top: 0.2rem;
+    margin-left: 0.2rem;
   }
   .close-btn:hover {
     color: var(--clr-red-light);
