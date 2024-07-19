@@ -10,6 +10,7 @@ import { useCartContext } from '../../contexts/cart';
 type AddToCartProps = {
   product: SingleProduct;
 };
+
 const AddToCart: FC<AddToCartProps> = ({
   product = { colors: [], stock: 0 },
 }) => {

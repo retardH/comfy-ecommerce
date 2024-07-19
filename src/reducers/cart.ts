@@ -10,10 +10,10 @@ import { Cart } from '../types';
 const cartReducer = (state: Cart, action: any): Cart => {
   if (action.type === ADD_TO_CART) {
     const { id, color, amount, product } = action.payload;
-    const tempItem = state.cart.find((i) => i.id === id + color);
-    if (tempItem) {
+    const itemInCart = state.cart.find((i) => i.id === id + color);
+    if (itemInCart) {
       const tempCart = state.cart.map((item) => {
-        if (tempItem.id === item.id) {
+        if (itemInCart.id === item.id) {
           let newAmount = item.amount + amount;
           if (newAmount > item.max) {
             newAmount = item.max;
@@ -65,7 +65,7 @@ const cartReducer = (state: Cart, action: any): Cart => {
             newAmount = 1;
           }
         }
-        return { ...item, amount: newAmount! };
+        return { ...item, amount: newAmount };
       }
       return item;
     });
